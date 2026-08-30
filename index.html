@@ -1555,7 +1555,7 @@
                 <div class="stars">${"★".repeat(p.stars)}${"☆".repeat(5 - p.stars)}</div>
                 <div class="product-price">
                     ${p.oldPrice ? `<span class="old-price">${formatMoney(p.oldPrice)}</span>` : ""}
-                    ${p.sizes ? "From " : ""}${formatMoney(p.price)}
+                    ${formatMoney(p.price)}
                 </div>
                 <button class="btn" onclick='openVariant(${JSON.stringify(p).replaceAll('"', "&quot;")})'>Add to Bag 🛍️</button>
             </div>
