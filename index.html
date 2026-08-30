@@ -4,12 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tolz 🎀 — Hair Accessories, Waist Beads, Perfumes & Jewelry</title>
-    <meta name="description" content="Tolz — scrunchies, claw clips, hair bands, hair pins, waist beads, perfumes, earrings & jewelry for every queen.">
-    <meta name="theme-color" content="#e0547f">
-    <meta property="og:title" content="Tolz 🎀 — Hair Accessories, Waist Beads, Perfumes & Jewelry" 
-          property="og:type" content="website"
-          property="og:image" content="https://cdn.phototourl.com/free/2026-08-28-fae2fc23-e832-46b7-a282-1e72df8442a4.jpg"
-          property="og:url" content="tolz-theta.vercel.app">
+    <!-- Primary Meta Tags -->
+    <title>Tolz 🎀 — Hair Accessories, Waist Beads, Perfumes & Jewelry</title>
+    <meta name="title" content="Tolz 🎀 — Hair Accessories, Waist Beads, Perfumes & Jewelry">
+    <meta name="description" content="Handcrafted with love 💕 Shop stylish satin scrunchies, claw clips, waist beads, long-lasting perfumes, and dainty jewelry. Fast delivery available!">
+
+    <!-- Open Graph / Facebook / WhatsApp -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tolz-theta.vercel.app/"> <!-- Replace with your actual live URL -->
+    <meta property="og:title" content="Tolz 🎀 — Hair Accessories, Waist Beads, Perfumes & Jewelry">
+    <meta property="og:description" content="Scrunchies, claw clips, waist beads, perfumes & jewelry — everything a queen needs 👑 Premium quality & fast delivery!">
+    <meta property="og:image" content="https://cdn.phototourl.com/free/2026-08-28-fae2fc23-e832-46b7-a282-1e72df8442a4.jpg"> <!-- Replace with full absolute URL to your banner image -->
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Tolz">
+
+<!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://tolz-theta.vercel.app/"> <!-- Replace with your actual live URL -->
+    <meta name="twitter:title" content="Tolz 🎀 — Hair Accessories, Waist Beads, Perfumes & Jewelry">
+    <meta name="twitter:description" content="Scrunchies, claw clips, waist beads, perfumes & jewelry — everything a queen needs 👑 Premium quality & fast delivery!">
+    <meta name="twitter:image" content="https://cdn.phototourl.com/free/2026-08-28-fae2fc23-e832-46b7-a282-1e72df8442a4.jpg"> <!-- Replace with full absolute URL to your banner image -->
     <link rel="icon" href="tolz.jpeg" type="image/jpeg" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
@@ -1152,13 +1167,12 @@
        TOLZ STORE — JavaScript (v3)
     ===================================================== */
 
-    // ==== CONFIGURATION ====
-    const WHATSAPP_NUMBER  = "2349030565049"; // local number: 09030565049
-    const NGN_RATE         = 1600;            // ₦ per $1 — update anytime
-    const DELIVERY_FEE_NGN = 2000;            // flat delivery fee in Naira
-    const FREE_DELIVERY_NGN = 25000;          // free delivery above this subtotal (₦)
+    const WHATSAPP_NUMBER  = "2349030565049"; 
+    const NGN_RATE         = 1600;            
+    const DELIVERY_FEE_NGN = 2000;            
+    const FREE_DELIVERY_NGN = 25000;          
 
-    // Size options per category (categories not listed get no picker)
+    // Default category fallback sizes if product sizes are omitted
     const VARIANT_SIZES = {
         "scrunchies":  ["Small", "Medium", "Large"],
         "claw clips":  ["Mini", "Medium", "Large", "X-Large"],
@@ -1170,117 +1184,184 @@
     };
 
     // ==================================================
-    // VARIANT PICKER
-    // ==================================================
-    let currentVariantProduct = null;
-    let selectedVariant = null;
-
-    function openVariant(product) {
-        const sizes = VARIANT_SIZES[product.category];
-
-        // No size for this category → add straight away
-        if (!sizes || sizes.length === 0) {
-            addToCart(product.name, product.price, "");
-            return;
-        }
-
-        currentVariantProduct = product;
-        selectedVariant = null;
-
-        document.getElementById("vName").textContent = product.name;
-        document.getElementById("vPrice").textContent = formatMoney(product.price);
-        document.getElementById("vOptions").innerHTML = sizes.map(s =>
-            `<button class="variant-opt" onclick='pickVariant(this, "${s}")'>${s}</button>`
-        ).join("");
-
-        const addBtn = document.getElementById("vAddBtn");
-        addBtn.disabled = true;
-        addBtn.style.opacity = ".5";
-        addBtn.textContent = "Pick a size first 👀";
-
-        document.getElementById("variantOverlay").classList.add("show");
-    }
-
-    function pickVariant(btn, size) {
-        document.querySelectorAll(".variant-opt").forEach(b => b.classList.remove("selected"));
-        btn.classList.add("selected");
-        selectedVariant = size;
-
-        const addBtn = document.getElementById("vAddBtn");
-        addBtn.disabled = false;
-        addBtn.style.opacity = "1";
-        addBtn.textContent = `Add ${size} to Bag 🛍️`;
-    }
-
-    function confirmVariantAdd() {
-        if (currentVariantProduct && selectedVariant) {
-            addToCart(currentVariantProduct.name + " (" + selectedVariant + ")",
-                      currentVariantProduct.price);
-            hideVariant();
-        }
-    }
-
-    function hideVariant() {
-        document.getElementById("variantOverlay").classList.remove("show");
-    }
-
-    function closeVariant(e) {
-        if (e.target.id === "variantOverlay") hideVariant();
-    }
-
-    // Allow Esc key to close both modal & cart
-    document.addEventListener("keydown", e => {
-        if (e.key === "Escape") {
-            hideVariant();
-            closeConfirm();
-        }
-    });
-
-    // ==================================================
     // PRODUCT CATALOGUE
-    // Prices are stored in USD and converted for NGN.
+    // Add a `sizes` array with specific prices per size for products.
+    // If omitted, default sizes from VARIANT_SIZES will fall back to base `price`.
     // ==================================================
     const PRODUCTS = [
         // ----- SCRUNCHIES -----
-        { name: "Satin Scrunchie Pack (5)",     price: 8.99, category: "scrunchies",  img: "img/acbcead3-a40b-46c9-b0c4-f41dbe8aa3b4.jpeg",  tag: "NEW",        oldPrice: 15.99, stars: 5 },
-        { name: "Velvet Scrunchies Set",        price: 9.50, category: "scrunchies",  img: "img/velvet-scrunchies.jpg",  tag: "",           oldPrice: 0,     stars: 5 },
-        { name: "Cotton Mini Scrunchies",       price: 1.43,  category: "scrunchies",  img: "img/de547e38-f19e-4c6f-97cc-1ac3a6369c42.jpeg",  tag: "",           oldPrice: 0,     stars: 5 },
-        { name: "Silk Oversized Scrunchie",     price: 2.80,  category: "scrunchies",  img: "img/silk-scrunchies.jpg",  tag: "",           oldPrice: 0,     stars: 4 },
+        { 
+            name: "Satin Scrunchies ",     
+            price: 0.50,
+            category: "scrunchies",  
+            img: "img/acbcead3-a40b-46c9-b0c4-f41dbe8aa3b4.jpeg",  
+            tag: "NEW",        
+            oldPrice: 1.00, 
+            stars: 5,
+            sizes: [
+                { name: "Small", price: 0.50 },
+                { name: "Medium", price: 0.60 },
+                { name: "Large", price: 0.70 }
+            ]
+        },
+        { name: "Multi-colored Scrunchies",        price: 1.30, category: "scrunchies",  img: "img/scruch.jpeg",  tag: "",           oldPrice: 0,     stars: 5,
+            sizes: [
+                { name: "Small", price: 1.30 },
+                { name: "Medium", price: 1.40 },
+                { name: "Large", price: 1.50 }
+            ]
+        },
+        { name: "Cotton Mini Scrunchies",       price: 0.50,  category: "scrunchies",  img: "img/cotton.jpeg",  tag: "",           oldPrice: 0,     stars: 5, sizes: [
+                { name: "Small", price: 0.50 },
+                { name: "Medium", price: 0.60 },
+                { name: "Large", price: 0.70 }
+            ] },
+        { name: "Silk Oversized Scrunchies",     price: 0.80,  category: "scrunchies",  img: "img/silk-scrunchies.jpg",  tag: "",           oldPrice: 0,     stars: 4, sizes: [
+                { name: "Small", price: 0.80 },
+                { name: "Medium", price: 0.90 },
+                { name: "Large", price: 1.00 }
+            ] },
 
         // ----- CLAW CLIPS -----
-        { name: "Large Matte Claw Clip",        price: 2.40,  category: "claw clips",  img: "img/39c32484-05f1-4733-9719-e6ebb58a8efa.jpeg",  tag: "BESTSELLER", oldPrice: 0,     stars: 5 },
-        { name: "Tortoiseshell Claw Clips (2)", price: 4.99,  category: "claw clips",  img: "img/ae73ad59-5d82-4467-887e-c80ddf863977.jpeg",  tag: "",           oldPrice: 0,     stars: 5 },
-        { name: "Pastel Mini Claw Clip Set (4)",price: 8.80,  category: "claw clips",  img: "img/7b28f83a-9a87-4c76-8e41-dc6adf7d0339.jpeg",  tag: "",           oldPrice: 0,     stars: 4 },
+        { name: "Large Matte Claw Clip",        price: 1.60,  category: "claw clips",  img: "img/39c32484-05f1-4733-9719-e6ebb58a8efa.jpeg",  tag: "BESTSELLER", oldPrice: 0,     stars: 5, sizes: [
+                { name: "Small", price: 1.60 },
+                { name: "Medium", price: 1.70 },
+                { name: "Large", price: 1.80 }
+            ] },
+        { name: "Tortoiseshell Claw Clips", price: 1.60,  category: "claw clips",  img: "img/ae73ad59-5d82-4467-887e-c80ddf863977.jpeg",  tag: "",           oldPrice: 0,     stars: 5, sizes: [
+                { name: "Small", price: 1.60 },
+                { name: "Medium", price: 1.70 },
+                { name: "Large", price: 1.80 }
+            ] },
+        { name: "Pastel Mini Claw Clip",price: 0.70,  category: "claw clips",  img: "img/mini.jpeg",  tag: "",           oldPrice: 0,     stars: 4, sizes: [
+                { name: "Small", price: 0.70 },
+                { name: "Medium", price: 0.80 },
+                { name: "Large", price: 0.90 }
+            ] },
 
         // ----- HAIR BANDS -----
-        { name: "Floral Headband",              price: 2.69,  category: "hair bands",  img: "img/2ce9e150-7772-4593-9d9a-78d036ce95ed.jpeg",  tag: "",           oldPrice: 0,     stars: 5 },
-        { name: "Wide Padded Headband",         price: 2.85,  category: "hair bands",  img: "img/16e65c50-8d09-437a-a753-9a34da4df9f2.jpeg",  tag: "NEW",        oldPrice: 0,     stars: 5 },
-        { name: "Braided Elastic Bands (10)",   price: 1.90,  category: "hair bands",  img: "img/dfea921a-eeaa-4f75-a842-c5cc82461326.jpeg", tag: "",           oldPrice: 0,     stars: 4 },
+        { name: "Floral Headband",              price: 0.70,  category: "hair bands",  img: "img/headband.jpeg",  tag: "",           oldPrice: 0,     stars: 5, sizes: [
+                { name: "Small", price: 0.70 },
+                { name: "Medium", price: 0.80 },
+                { name: "Large", price: 0.90 }
+            ] },
+        { name: "Wide Padded Headband",         price: 0.95,  category: "hair bands",  img: "img/16e65c50-8d09-437a-a753-9a34da4df9f2.jpeg",  tag: "NEW",        oldPrice: 0,     stars: 5, sizes: [
+                { name: "Small", price: 0.95 },
+                { name: "Medium", price: 1.05 },
+                { name: "Large", price: 1.15}
+            ] },
+        { name: "Braided Elastic Bands",   price: 0.95,  category: "hair bands",  img: "img/dfea921a-eeaa-4f75-a842-c5cc82461326.jpeg", tag: "",           oldPrice: 0,     stars: 4, sizes: [
+                { name: "Small", price: 0.95 },
+                { name: "Medium", price: 1.05 },
+                { name: "Large", price: 1.15 }
+            ] },
+            { name: "Bow",   price: 1.10,  category: "hair bands",  img: "img/bow.jpeg", tag: "",           oldPrice: 0,     stars: 4, sizes: [
+                { name: "Small", price: 1.10 },
+                { name: "Medium", price: 1.20 },
+                { name: "Large", price: 1.30 }
+            ] },
 
         // ----- HAIR PINS -----
-        { name: "Pearl Hair Pins (Set of 6)",   price: 8.99,  category: "hair pins",   img: "img/73bd7e0a-3306-4d33-a833-46ae09580f48.jpeg", tag: "",           oldPrice: 0,     stars: 5 },
-        { name: "Gold Twist Hair Pins (3)",     price: 6.50,  category: "hair pins",   img: "img/3420ba5e-02f4-43da-8739-e15a63e84f22.jpeg", tag: "",           oldPrice: 0,     stars: 5 },
-        { name: "Crystal Rhinestone Hair Pins", price: 1.20,  category: "hair pins",   img: "img/bc8959ad-2f3e-44e9-a424-3ac11a122a10.jpeg", tag: "NEW",        oldPrice: 0,     stars: 4 },
+        { name: "Pearl Hair Pins",   price: 0.95,  category: "hair pins",   img: "img/73bd7e0a-3306-4d33-a833-46ae09580f48.jpeg", tag: "",           oldPrice: 0,     stars: 5, sizes: [
+                { name: "Small", price: 0.95 },
+                { name: "Medium", price: 1.05 },
+                { name: "Large", price: 1.15}
+            ]},
+        { name: "Gold Twist Hair Pins ",     price: 0.80,  category: "hair pins",   img: "img/3420ba5e-02f4-43da-8739-e15a63e84f22.jpeg", tag: "",           oldPrice: 0,     stars: 5, sizes: [
+                { name: "Small", price: 0.80 },
+                { name: "Medium", price: 0.90 },
+                { name: "Large", price: 1.00 }
+            ] },
+        { name: "Crystal Rhinestone Hair Pins", price: 0.80,  category: "hair pins",   img: "img/bc8959ad-2f3e-44e9-a424-3ac11a122a10.jpeg", tag: "NEW",        oldPrice: 0,     stars: 4, sizes: [
+                { name: "Small", price: 0.80 },
+                { name: "Medium", price: 0.90 },
+                { name: "Large", price: 1.00 }
+            ] },
 
         // ----- WAIST BEADS -----
-        { name: "Classic Waist Beads",          price: 1.50,  category: "waist beads", img: "img/Hope- Bridal Luxury Crystal Waist Beads _ Crystal WaistBeads _ Body Jewelry _ African Waist Beads _ White Crystal WaistBead _ Tie On _ 45_.jpeg", tag: "BESTSELLER", oldPrice: 0,     stars: 5 },
-        { name: "Gold Accent Waist Beads",      price: 1.60, category: "waist beads", img: "img/05b2a63a-75a5-4071-838a-536b94cbd76d.jpeg", tag: "",           oldPrice: 0,     stars: 5 },
-        { name: "Crystal Charm Waist Beads",    price: 1.70, category: "waist beads", img: "img/0892f421-a6c0-4609-bfd9-bd63d7a58ee3.jpeg", tag: "",           oldPrice: 0,     stars: 5 },
+        { name: "Customizable Waist Beads",          price: 2.50,  category: "waist beads", img: "img/classic.jpeg", tag: "BESTSELLER", oldPrice: 0,     stars: 5, sizes: [
+                { name: "Small", price: 2.50 },
+                { name: "Medium", price: 2.60 },
+                { name: "Large", price: 2.70 }
+            ] },
+        { name: "Gold Accent Waist Beads",      price: 1.50, category: "waist beads", img: "img/05b2a63a-75a5-4071-838a-536b94cbd76d.jpeg", tag: "",           oldPrice: 0,     stars: 5, sizes: [
+                { name: "Small", price: 1.50 },
+                { name: "Medium", price: 1.60 },
+                { name: "Large", price: 1.70 }
+            ]},
+        { name: "Crystal Charm Waist Beads",    price: 1.40, category: "waist beads", img: "img/0892f421-a6c0-4609-bfd9-bd63d7a58ee3.jpeg", tag: "",           oldPrice: 0,     stars: 5,  sizes: [
+                { name: "Small", price: 1.40 },
+                { name: "Medium", price: 1.50 },
+                { name: "Large", price: 1.60 }
+            ] },
 
         // ----- PERFUMES -----
-        { name: "Vanilla Bliss Body Spray",     price: 10.99, category: "perfumes",    img: "img/573bd2b4-6bed-4d95-8487-2ea2d6781813.jpeg", tag: "NEW",        oldPrice: 0,     stars: 5 },
-        { name: "Rose Garden Eau de Parfum",    price: 12.99, category: "perfumes",    img: "img/900abc63-9ca3-4f2f-ae33-d7768a7e215e.jpeg", tag: "",           oldPrice: 0,     stars: 5 },
-        { name: "Sweet Peach Mist",             price: 8.50, category: "perfumes",    img: "img/61653dae-ac05-42e5-b3be-d75a5786f5c8.jpeg", tag: "",           oldPrice: 0,     stars: 4 },
+        { 
+            name: "Body Spray",     
+            price: 6.99, 
+            category: "perfumes",    
+            img: "img/body spray.jpeg", 
+            tag: "NEW",        
+            oldPrice: 0,     
+            stars: 5,
+            sizes: [
+                { name: "30ml", price: 6.99 },
+                { name: "50ml", price: 7.99 },
+                { name: "100ml", price: 8.99 }
+            ]
+        },
+        { name: "Oil Perfume",    price: 0.50, category: "perfumes",    img: "img/oil.jpeg", tag: "",           oldPrice: 0,     stars: 5,
+            sizes: [
+                { name: "30ml", price: 0.50 },
+                { name: "50ml", price: 0.60 },
+                { name: "100ml", price: 0.70 }
+            ] },
+        { name: "Rose Garden Eau de Parfum",    price: 3.99, category: "perfumes",    img: "img/900abc63-9ca3-4f2f-ae33-d7768a7e215e.jpeg", tag: "",           oldPrice: 0,     stars: 5,
+            sizes: [
+                { name: "30ml", price: 3.99 },
+                { name: "50ml", price: 4.99 },
+                { name: "100ml", price: 5.99 }
+            ] },
+        { name: "Body Mist",             price: 1.99, category: "perfumes",    img: "img/61653dae-ac05-42e5-b3be-d75a5786f5c8.jpeg", tag: "",           oldPrice: 0,     stars: 4,
+            sizes: [
+                { name: "30ml", price: 1.99 },
+                { name: "50ml", price: 2.99 },
+                { name: "100ml", price: 3.99 }
+            ] },
 
         // ----- EARRINGS -----
-        { name: "Pearl Stud Earrings",          price: 2.99,  category: "earrings",    img: "img/15 Pairs of Retro Pearl Geometric Six Claw Crystal Zircon Earrings Set, Suitable for Daily Wear for.jpeg", tag: "",           oldPrice: 0,     stars: 5 },
-        { name: "Gold Hoop Earrings (Set of 3)",price: 5.50, category: "earrings",    img: "img/Shein Jewelry _ Shein Gold Multi-Style Hoop Earring Set _ Color_ Gold _ Size_ Os.jpeg", tag: "BESTSELLER", oldPrice: 0,     stars: 5 },
-        { name: "Colorful Tassel Earrings",     price: 1.60,  category: "earrings",    img: "img/342b4ecf-cffa-444e-b2f0-9a679d2e15d2.jpeg", tag: "",           oldPrice: 0,     stars: 4 },
+        { name: "Pearl Stud Earrings",          price: 0.50,  category: "earrings",    img: "img/15 Pairs of Retro Pearl Geometric Six Claw Crystal Zircon Earrings Set, Suitable for Daily Wear for.jpeg", tag: "",           oldPrice: 0,     stars: 5, sizes: [
+                { name: "Small", price: 0.50 },
+                { name: "Medium", price: 0.60 },
+                { name: "Large", price: 0.70 }
+            ] },
+        { name: "Gold Stud Earrings",price: 0.50, category: "earrings",    img: "img/gold stud.jpeg", tag: "BESTSELLER", oldPrice: 0,     stars: 5, sizes: [
+                { name: "Small", price: 0.50 },
+                { name: "Medium", price: 0.60 },
+                { name: "Large", price: 0.70 }
+            ] },
+        { name: "Gold Knuckle Rings",     price: 0.50,  category: "earrings",    img: "img/gold rings.jpeg", tag: "",           oldPrice: 0,     stars: 4, sizes: [
+                { name: "Small", price: 0.50 },
+                { name: "Medium", price: 0.60 },
+                { name: "Large", price: 0.70 }
+            ] },
 
         // ----- JEWELRY -----
-        { name: "Dainty Layered Necklace",      price: 3.00, category: "jewelry",     img: "img/bb50cbf4-be6c-4a19-ada5-df4ab51a8abb.jpeg", tag: "",           oldPrice: 0,     stars: 5 },
-        { name: "Charm Bracelet Set",           price: 2.89, category: "jewelry",     img: "img/12-Piece Boho Gold & Pearl Charm Bracelet Set for Women _ Daisy, Heart & Rhinestone Stack Bracelets.jpeg", tag: "NEW",        oldPrice: 0,     stars: 5 },
-        { name: "Elegant Pendants",             price: 2.10,  category: "jewelry",     img: "img/17ac6e34-5811-47b1-b32c-668c6c48021b.jpeg", tag: "",           oldPrice: 0,     stars: 4 }
+        { name: "Dainty Layered Necklace",      price: 1.60, category: "jewelry",     img: "img/bb50cbf4-be6c-4a19-ada5-df4ab51a8abb.jpeg", tag: "",           oldPrice: 0,     stars: 5, sizes: [
+                { name: "Small", price: 1.60 },
+                { name: "Medium", price: 1.70},
+                { name: "Large", price: 1.80 }
+            ] },
+        { name: "Charm Bracelet",           price: 2.50, category: "jewelry",     img: "img/charm bracelet.jpeg", tag: "NEW",        oldPrice: 0,     stars: 5, sizes: [
+                { name: "Small", price: 2.50},
+                { name: "Medium", price: 2.60 },
+                { name: "Large", price: 2.70 }
+            ] },
+        { name: "Hand Bracelets",             price: 2.50,  category: "jewelry",     img: "img/hand bracelet.jpeg", tag: "",           oldPrice: 0,     stars: 4, sizes: [
+                { name: "Small", price: 2.00 },
+                { name: "Medium", price: 2.10 },
+                { name: "Large", price: 2.20 }
+            ] }
     ];
 
     const CATEGORIES = [
@@ -1299,20 +1380,100 @@
     // STATE
     // ==================================================
     let activeCategory = "all";
-    let currency       = "NGN";   // default currency: Naira
+    let currency       = "NGN";   
     let cart           = [];
 
-    // Load saved cart & currency from localStorage
     try {
         const savedCart = JSON.parse(localStorage.getItem("tolz_cart"));
         if (Array.isArray(savedCart)) cart = savedCart;
         currency = localStorage.getItem("tolz_currency") || "NGN";
-    } catch (e) { /* first visit — nothing saved */ }
+    } catch (e) { }
 
     function saveState() {
         localStorage.setItem("tolz_cart", JSON.stringify(cart));
         localStorage.setItem("tolz_currency", currency);
     }
+
+    // ==================================================
+    // VARIANT PICKER (DYNAMIC PRICE UPDATES)
+    // ==================================================
+    let currentVariantProduct = null;
+    let selectedVariant = null;
+
+    function openVariant(product) {
+        let sizeOptions = [];
+
+        // Check if the item has explicit size pricing or falls back to category defaults
+        if (product.sizes && product.sizes.length > 0) {
+            sizeOptions = product.sizes;
+        } else if (VARIANT_SIZES[product.category]) {
+            sizeOptions = VARIANT_SIZES[product.category].map(s => ({ name: s, price: product.price }));
+        }
+
+        if (sizeOptions.length === 0) {
+            addToCart(product.name, product.price);
+            return;
+        }
+
+        currentVariantProduct = product;
+        selectedVariant = null;
+
+        document.getElementById("vName").textContent = product.name;
+        document.getElementById("vPrice").textContent = formatMoney(product.price);
+        
+        document.getElementById("vOptions").innerHTML = sizeOptions.map(opt =>
+            `<button class="variant-opt" onclick='pickVariant(this, "${opt.name}", ${opt.price})'>
+                ${opt.name} (${formatMoney(opt.price)})
+            </button>`
+        ).join("");
+
+        const addBtn = document.getElementById("vAddBtn");
+        addBtn.disabled = true;
+        addBtn.style.opacity = ".5";
+        addBtn.textContent = "Pick a size first 👀";
+
+        document.getElementById("variantOverlay").classList.add("show");
+    }
+
+    function pickVariant(btn, sizeName, sizePrice) {
+        document.querySelectorAll(".variant-opt").forEach(b => b.classList.remove("selected"));
+        btn.classList.add("selected");
+        
+        selectedVariant = { name: sizeName, price: sizePrice };
+
+        // Dynamically update display price in modal
+        document.getElementById("vPrice").textContent = formatMoney(sizePrice);
+
+        const addBtn = document.getElementById("vAddBtn");
+        addBtn.disabled = false;
+        addBtn.style.opacity = "1";
+        addBtn.textContent = `Add ${sizeName} to Bag 🛍️`;
+    }
+
+    function confirmVariantAdd() {
+        if (currentVariantProduct && selectedVariant) {
+            addToCart(
+                currentVariantProduct.name + " (" + selectedVariant.name + ")",
+                selectedVariant.price
+            );
+            hideVariant();
+        }
+    }
+
+    function hideVariant() {
+        document.getElementById("variantOverlay").classList.remove("show");
+    }
+
+    function closeVariant(e) {
+        if (e.target.id === "variantOverlay") hideVariant();
+    }
+
+    document.addEventListener("keydown", e => {
+        if (e.key === "Escape") {
+            hideVariant();
+            closeConfirm();
+        }
+    });
 
     // ==================================================
     // CURRENCY HELPERS
@@ -1358,7 +1519,7 @@
     }
 
     // ==================================================
-    // PRODUCTS (with live search)
+    // PRODUCTS RENDER
     // ==================================================
     function renderProducts() {
         const grid = document.getElementById("productsGrid");
@@ -1370,7 +1531,6 @@
             (term === "" || p.name.toLowerCase().includes(term) || p.category.includes(term))
         );
 
-        // Results count line
         if (term || activeCategory !== "all") {
             countEl.textContent = visible.length
                 ? `Showing ${visible.length} prett${visible.length > 1 ? "ies" : "y"} 🌸`
@@ -1380,8 +1540,7 @@
         }
 
         if (visible.length === 0) {
-            grid.innerHTML =
-                '<p class="no-products">No pretties match your search 💔<br>Try another word 🎀</p>';
+            grid.innerHTML = '<p class="no-products">No pretties match your search 💔<br>Try another word 🎀</p>';
             return;
         }
 
@@ -1396,7 +1555,7 @@
                 <div class="stars">${"★".repeat(p.stars)}${"☆".repeat(5 - p.stars)}</div>
                 <div class="product-price">
                     ${p.oldPrice ? `<span class="old-price">${formatMoney(p.oldPrice)}</span>` : ""}
-                    ${formatMoney(p.price)}
+                    ${p.sizes ? "From " : ""}${formatMoney(p.price)}
                 </div>
                 <button class="btn" onclick='openVariant(${JSON.stringify(p).replaceAll('"', "&quot;")})'>Add to Bag 🛍️</button>
             </div>
@@ -1404,7 +1563,7 @@
     }
 
     // ==================================================
-    // MOBILE MENU
+    // MOBILE MENU & TOAST
     // ==================================================
     function toggleMenu() {
         document.getElementById("mobileMenu").classList.toggle("open");
@@ -1412,9 +1571,6 @@
         document.getElementById("hamburgerBtn").classList.toggle("active");
     }
 
-    // ==================================================
-    // TOAST
-    // ==================================================
     let toastTimer;
     function showToast(message) {
         const toast = document.getElementById("toast");
@@ -1425,7 +1581,7 @@
     }
 
     // ==================================================
-    // CART SYSTEM (persisted in localStorage)
+    // CART SYSTEM
     // ==================================================
     function toggleCart() {
         document.getElementById("cartPanel").classList.toggle("open");
@@ -1434,7 +1590,6 @@
     }
 
     function addToCart(name, price) {
-        // check if this exact name+item already exists
         const existing = cart.find(item => item.name === name);
         if (existing) existing.qty++;
         else cart.push({ name, price, qty: 1 });
@@ -1479,8 +1634,7 @@
         const summaryEl = document.getElementById("cartSummary");
 
         if (cart.length === 0) {
-            itemsDiv.innerHTML =
-                '<p class="empty-msg">Your bag is empty 💔<br>Add some pretties! 🎀</p>';
+            itemsDiv.innerHTML = '<p class="empty-msg">Your bag is empty 💔<br>Add some pretties! 🎀</p>';
             summaryEl.innerHTML = "";
             return;
         }
@@ -1500,11 +1654,9 @@
 
         const { subtotalNGN, deliveryNGN } = cartTotals();
         const grandNGN = subtotalNGN + deliveryNGN;
-        // Snapshot for confirmation screen (bag gets cleared later)
         window.lastOrderedItems = [...cart];
         window.lastGrandTotal   = grandNGN;
 
-        // Summary shown in NGN always (store base currency), grand total in selected currency
         summaryEl.innerHTML = `
             <div class="cart-summary-line"><span>Subtotal</span><span>₦${subtotalNGN.toLocaleString()}</span></div>
             <div class="cart-summary-line">
@@ -1517,7 +1669,7 @@
     }
 
     // ==================================================
-    // WHATSAPP CHECKOUT (with order number & delivery)
+    // WHATSAPP CHECKOUT
     // ==================================================
     function checkoutViaWhatsApp() {
         if (cart.length === 0) {
@@ -1536,8 +1688,6 @@
 
         const { subtotalNGN, deliveryNGN } = cartTotals();
         const grandNGN = subtotalNGN + deliveryNGN;
-
-        // Generate order number e.g. TLZ-7F3K2
         const orderNo = "TLZ-" + Math.random().toString(36).slice(2, 7).toUpperCase();
 
         let message = "🎀 *NEW ORDER — TOLZ STORE* 🎀\n\n";
@@ -1561,10 +1711,8 @@
         window.open(waUrl, "_blank");
         showToast("Opening WhatsApp… your order is almost there! 🚀");
 
-        // ----- SHOW CONFIRMATION SCREEN -----
         showConfirmation(orderNo, waUrl);
 
-        // Clear bag & form after successful order
         cart = [];
         saveState();
         updateCartCount();
@@ -1592,11 +1740,11 @@
 
     function closeConfirm() {
         document.getElementById("confirmScreen").classList.remove("show");
-        window.location.hash = "#shop";   // send customer back to products
+        window.location.hash = "#shop";
     }
 
     // ==================================================
-    // BACK TO TOP BUTTON
+    // BACK TO TOP
     // ==================================================
     window.addEventListener("scroll", () => {
         document.getElementById("backToTop")
@@ -1609,5 +1757,5 @@
     updateCurrencyButtons();
     renderTabs();
     renderProducts();
-    renderCart();   // restores saved bag from previous visit
+    renderCart();
 </script>
