@@ -11,25 +11,24 @@
 
     <!-- Open Graph / Facebook / WhatsApp -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://tolz-theta.vercel.app/"> <!-- Replace with your actual live URL -->
+    <meta property="og:url" content="https://tolz-theta.vercel.app/">
     <meta property="og:title" content="Tolz 🎀 — Hair Accessories, Waist Beads, Perfumes & Jewelry">
     <meta property="og:description" content="Scrunchies, claw clips, waist beads, perfumes & jewelry — everything a queen needs 👑 Premium quality & fast delivery!">
-    <meta property="og:image" content="https://cdn.phototourl.com/free/2026-08-28-fae2fc23-e832-46b7-a282-1e72df8442a4.jpg"> <!-- Replace with full absolute URL to your banner image -->
+    <meta property="og:image" content="https://cdn.phototourl.com/free/2026-08-28-fae2fc23-e832-46b7-a282-1e72df8442a4.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:site_name" content="Tolz">
 
-<!-- Twitter Card -->
+    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://tolz-theta.vercel.app/"> <!-- Replace with your actual live URL -->
+    <meta name="twitter:url" content="https://tolz-theta.vercel.app/">
     <meta name="twitter:title" content="Tolz 🎀 — Hair Accessories, Waist Beads, Perfumes & Jewelry">
     <meta name="twitter:description" content="Scrunchies, claw clips, waist beads, perfumes & jewelry — everything a queen needs 👑 Premium quality & fast delivery!">
-    <meta name="twitter:image" content="https://cdn.phototourl.com/free/2026-08-28-fae2fc23-e832-46b7-a282-1e72df8442a4.jpg"> <!-- Replace with full absolute URL to your banner image -->
+    <meta name="twitter:image" content="https://cdn.phototourl.com/free/2026-08-28-fae2fc23-e832-46b7-a282-1e72df8442a4.jpg">
     <link rel="icon" href="tolz.jpeg" type="image/jpeg" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9734201637944757"
-     crossorigin="anonymous"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9734201637944757" crossorigin="anonymous"></script>
 
     <style>
         /* ============================================
@@ -278,7 +277,7 @@
             cursor: pointer;
             box-shadow: 0 4px 14px rgba(224,84,127,.35);
             transition: transform .2s ease, box-shadow .2s ease;
- animation: fadeUp .7s ease .45s both;
+            animation: fadeUp .7s ease .45s both;
         }
         .btn:hover { transform: scale(1.06); box-shadow: var(--shadow-hover); }
 
@@ -690,7 +689,8 @@
             margin: 8px 0 15px;
         }
 
-        .checkout-form input {
+        .checkout-form input[type="text"],
+        .checkout-form input[type="tel"] {
             width: 100%;
             padding: 12px 15px;
             margin-bottom: 12px;
@@ -705,6 +705,23 @@
             outline: none;
             border-color: var(--pink-main);
             box-shadow: 0 0 8px rgba(255,143,179,.55);
+        }
+
+        .delivery-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--pink-dark);
+            cursor: pointer;
+        }
+        .delivery-option input {
+            accent-color: var(--pink-main);
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
         }
 
         .whatsapp-btn {
@@ -751,178 +768,178 @@
         .toast.show { transform: translateX(-50%) translateY(0); }
 
         /* ---------- Variant Picker Modal ---------- */
-.variant-overlay {
-    position: fixed; inset: 0;
-    background: rgba(107,58,75,.45);
-    backdrop-filter: blur(3px);
-    z-index: 300;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-}
-.variant-overlay.show { display: flex; animation: fadeUp .25s ease; }
+        .variant-overlay {
+            position: fixed; inset: 0;
+            background: rgba(107,58,75,.45);
+            backdrop-filter: blur(3px);
+            z-index: 300;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .variant-overlay.show { display: flex; animation: fadeUp .25s ease; }
 
-.variant-modal {
-    background: #fff5f9;
-    border: 3px solid var(--pink-main);
-    border-radius: var(--radius);
-    max-width: 380px;
-    width: 100%;
-    padding: 30px 26px;
-    text-align: center;
-    box-shadow: var(--shadow-hover);
-    position: relative;
-    animation: bounceIn .4s cubic-bezier(.68,-.55,.27,1.55);
-}
+        .variant-modal {
+            background: #fff5f9;
+            border: 3px solid var(--pink-main);
+            border-radius: var(--radius);
+            max-width: 380px;
+            width: 100%;
+            padding: 30px 26px;
+            text-align: center;
+            box-shadow: var(--shadow-hover);
+            position: relative;
+            animation: bounceIn .4s cubic-bezier(.68,-.55,.27,1.55);
+        }
 
-.variant-modal h3 {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    color: var(--pink-dark);
-    margin-bottom: 6px;
-}
-.variant-modal .variant-price {
-    color: var(--pink-main);
-    font-weight: 700;
-    font-size: 18px;
-    margin-bottom: 18px;
-}
+        .variant-modal h3 {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            color: var(--pink-dark);
+            margin-bottom: 6px;
+        }
+        .variant-modal .variant-price {
+            color: var(--pink-main);
+            font-weight: 700;
+            font-size: 18px;
+            margin-bottom: 18px;
+        }
 
-.variant-options { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 20px; }
+        .variant-options { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 20px; }
 
-.variant-opt {
-    border: 2px solid var(--pink-border);
-    background: #fff;
-    color: var(--pink-dark);
-    font-family: 'Poppins', sans-serif;
-    font-weight: 600;
-    font-size: 13px;
-    padding: 9px 20px;
-    border-radius: 30px;
-    cursor: pointer;
-    transition: all .2s ease;
-}
-.variant-opt:hover { border-color: var(--pink-main); transform: translateY(-2px); }
-.variant-opt.selected {
-    background: linear-gradient(135deg, var(--pink-main), var(--pink-deep));
-    border-color: transparent;
-    color: #fff;
-}
+        .variant-opt {
+            border: 2px solid var(--pink-border);
+            background: #fff;
+            color: var(--pink-dark);
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 13px;
+            padding: 9px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all .2s ease;
+        }
+        .variant-opt:hover { border-color: var(--pink-main); transform: translateY(-2px); }
+        .variant-opt.selected {
+            background: linear-gradient(135deg, var(--pink-main), var(--pink-deep));
+            border-color: transparent;
+            color: #fff;
+        }
 
-.variant-close {
-    position: absolute; top: 12px; right: 16px;
-    background: none; border: none;
-    font-size: 20px; cursor: pointer;
-    color: var(--pink-deep);
-    transition: transform .3s ease;
-}
-.variant-close:hover { transform: rotate(90deg); }
+        .variant-close {
+            position: absolute; top: 12px; right: 16px;
+            background: none; border: none;
+            font-size: 20px; cursor: pointer;
+            color: var(--pink-deep);
+            transition: transform .3s ease;
+        }
+        .variant-close:hover { transform: rotate(90deg); }
 
-.variant-modal .btn { width: 100%; text-align: center; }
+        .variant-modal .btn { width: 100%; text-align: center; }
 
-/* ---------- Order Confirmation Screen ---------- */
-.confirm-screen {
-    position: fixed; inset: 0;
-    background:
-        radial-gradient(circle at 20% 25%, rgba(255,255,255,.6) 0%, transparent 40%),
-        linear-gradient(150deg, #ffd9ec 0%, #ffeef5 60%, #ffc2d9 100%);
-    z-index: 500;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    padding: 24px;
-    overflow-y: auto;
-}
-.confirm-screen.show { display: flex; animation: fadeUp .35s ease; }
+        /* ---------- Order Confirmation Screen ---------- */
+        .confirm-screen {
+            position: fixed; inset: 0;
+            background:
+                radial-gradient(circle at 20% 25%, rgba(255,255,255,.6) 0%, transparent 40%),
+                linear-gradient(150deg, #ffd9ec 0%, #ffeef5 60%, #ffc2d9 100%);
+            z-index: 500;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            overflow-y: auto;
+        }
+        .confirm-screen.show { display: flex; animation: fadeUp .35s ease; }
 
-.confirm-card {
-    background: #ffffff;
-    border-radius: 30px;
-    box-shadow: var(--shadow-hover);
-    border: 3px solid var(--pink-border);
-    max-width: 480px;
-    width: 100%;
-    padding: 45px 34px;
-    text-align: center;
-    animation: bounceIn .5s cubic-bezier(.68,-.55,.27,1.55);
-}
+        .confirm-card {
+            background: #ffffff;
+            border-radius: 30px;
+            box-shadow: var(--shadow-hover);
+            border: 3px solid var(--pink-border);
+            max-width: 480px;
+            width: 100%;
+            padding: 45px 34px;
+            text-align: center;
+            animation: bounceIn .5s cubic-bezier(.68,-.55,.27,1.55);
+        }
 
-.confirm-check {
-    width: 85px; height: 85px;
-    margin: 0 auto 20px;
-    background: linear-gradient(135deg, #4ade80, #16a34a);
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 42px;
-    color: #fff;
-    animation: pop .5s cubic-bezier(.68,-.55,.27,1.55) both,
-               pulse-green 2.2s ease infinite .6s;
-}
+        .confirm-check {
+            width: 85px; height: 85px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, #4ade80, #16a34a);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 42px;
+            color: #fff;
+            animation: pop .5s cubic-bezier(.68,-.55,.27,1.55) both,
+                       pulse-green 2.2s ease infinite .6s;
+        }
 
-.confirm-card h2 {
-    font-style: italic;
-    color: var(--pink-deep);
-    margin-bottom: 8px;
-}
-.confirm-card .order-no-pill {
-    display: inline-block;
-    background: var(--pink-soft);
-    color: var(--pink-dark);
-    font-weight: 700;
-    letter-spacing: 1px;
-    font-size: 14px;
-    padding: 7px 22px;
-    border-radius: 30px;
-    margin-bottom: 18px;
-}
+        .confirm-card h2 {
+            font-style: italic;
+            color: var(--pink-deep);
+            margin-bottom: 8px;
+        }
+        .confirm-card .order-no-pill {
+            display: inline-block;
+            background: var(--pink-soft);
+            color: var(--pink-dark);
+            font-weight: 700;
+            letter-spacing: 1px;
+            font-size: 14px;
+            padding: 7px 22px;
+            border-radius: 30px;
+            margin-bottom: 18px;
+        }
 
-.confirm-summary {
-    text-align: left;
-    background: #fff5f9;
-    border: 1px dashed var(--pink-main);
-    border-radius: 18px;
-    padding: 16px 20px;
-    margin-bottom: 20px;
-    font-size: 14px;
-    color: var(--ink);
-}
-.confirm-summary .cs-row {
-    display: flex; justify-content: space-between;
-    padding: 4px 0;
-}
-.confirm-summary .cs-total {
-    font-weight: 700;
-    color: var(--pink-dark);
-    font-size: 16px;
-    border-top: 1px dashed var(--pink-main);
-    margin-top: 8px;
-    padding-top: 10px;
-}
+        .confirm-summary {
+            text-align: left;
+            background: #fff5f9;
+            border: 1px dashed var(--pink-main);
+            border-radius: 18px;
+            padding: 16px 20px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            color: var(--ink);
+        }
+        .confirm-summary .cs-row {
+            display: flex; justify-content: space-between;
+            padding: 4px 0;
+        }
+        .confirm-summary .cs-total {
+            font-weight: 700;
+            color: var(--pink-dark);
+            font-size: 16px;
+            border-top: 1px dashed var(--pink-main);
+            margin-top: 8px;
+            padding-top: 10px;
+        }
 
-.confirm-note { font-size: 13px; color: var(--pink-text); margin-bottom: 22px; }
-.confirm-actions { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
-.confirm-actions .btn { flex: 1; min-width: 160px; padding: 13px 20px; font-size: 15px; }
-.btn-outline {
-    background: transparent;
-    border: 2px solid var(--pink-main);
-    color: var(--pink-deep);
-    box-shadow: none;
-}
-.btn-outline:hover { background: var(--pink-light); }
+        .confirm-note { font-size: 13px; color: var(--pink-text); margin-bottom: 22px; }
+        .confirm-actions { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+        .confirm-actions .btn { flex: 1; min-width: 160px; padding: 13px 20px; font-size: 15px; }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--pink-main);
+            color: var(--pink-deep);
+            box-shadow: none;
+        }
+        .btn-outline:hover { background: var(--pink-light); }
 
-@keyframes bounceIn {
-    from { opacity: 0; transform: scale(.7); }
-    to   { opacity: 1; transform: scale(1); }
-}
-@keyframes pop {
-    from { transform: scale(0) rotate(-30deg); }
-    to   { transform: scale(1) rotate(0); }
-}
-@keyframes pulse-green {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(74,222,128,.45); }
-    50%      { box-shadow: 0 0 0 18px rgba(74,222,128,0); }
-}
+        @keyframes bounceIn {
+            from { opacity: 0; transform: scale(.7); }
+            to   { opacity: 1; transform: scale(1); }
+        }
+        @keyframes pop {
+            from { transform: scale(0) rotate(-30deg); }
+            to   { transform: scale(1) rotate(0); }
+        }
+        @keyframes pulse-green {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(74,222,128,.45); }
+            50%      { box-shadow: 0 0 0 18px rgba(74,222,128,0); }
+        }
 
         /* ---------- Animations ---------- */
         @keyframes fadeUp {
@@ -967,17 +984,17 @@
         }
 
         .logos img {
-    height: 42px;
-    width: 42px; /* Force 1:1 aspect ratio for a perfect circle */
-    object-fit: cover;
-    object-position: center;
-    border-radius: 50%; /* Cuts off the background outside the center circle */
-    box-shadow: 0 2px 8px rgba(224, 84, 127, 0.25); /* Optional subtle pink glow */
-    display: inline-block;
-    vertical-align: middle;
-}
+            height: 42px;
+            width: 42px;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 50%;
+            box-shadow: 0 2px 8px rgba(224, 84, 127, 0.25);
+            display: inline-block;
+            vertical-align: middle;
+        }
 
-.brand{font-family:var(--font-head);font-size:1.4rem;font-weight:700;letter-spacing:.01em;text-decoration:none;color:var(--charcoal);display:inline-flex;align-items:center;gap:.6rem}
+        .brand{font-family:var(--font-head);font-size:1.4rem;font-weight:700;letter-spacing:.01em;text-decoration:none;color:var(--charcoal);display:inline-flex;align-items:center;gap:.6rem}
     </style>
 </head>
 <body>
@@ -990,7 +1007,6 @@
 
          <a class="brand" href="#top"><span class="logos" aria-hidden="true"><img src="tolz.jpeg" alt="Tolz logo"></span><span class="logo">TOLZ</span></a>
         
-
         <nav class="desktop-nav">
             <ul>
                 <li><a href="#home">Home</a></li>
@@ -1123,7 +1139,15 @@
         <div class="checkout-form">
             <input type="text" id="custName" placeholder="Your Full Name *">
             <input type="tel" id="custPhone" placeholder="Your Phone Number *">
-                        <input type="text" id="custAddress" placeholder="Delivery Address *">
+            
+            <!-- Optional Delivery Toggle -->
+            <label class="delivery-option">
+                <input type="checkbox" id="needDelivery" onchange="toggleAddressVisibility()">
+                Add Delivery (₦2,000) 🚚
+            </label>
+            
+            <input type="text" id="custAddress" placeholder="Delivery Address *" style="display: none;">
+            
             <button class="whatsapp-btn" onclick="checkoutViaWhatsApp()">
                 💖 Confirm Order via WhatsApp
             </button>
@@ -1131,33 +1155,33 @@
     </div>
 
     <!-- Variant picker modal -->
-<div class="variant-overlay" id="variantOverlay" onclick="closeVariant(event)">
-    <div class="variant-modal" onclick="event.stopPropagation()">
-        <button class="variant-close" onclick="hideVariant()">✕</button>
-        <h3 id="vName"></h3>
-        <p class="variant-price" id="vPrice"></p>
-        <p style="font-size:13px;color:var(--pink-text);margin-bottom:10px;">Choose your size / variant 🎀</p>
-        <div class="variant-options" id="vOptions"></div>
-        <button class="btn" id="vAddBtn" onclick="confirmVariantAdd()" disabled
-                style="opacity:.5;">Add to Bag 🛍️</button>
-    </div>
-</div>
-
-<!-- Order confirmation screen -->
-<div class="confirm-screen" id="confirmScreen">
-    <div class="confirm-card">
-        <div class="confirm-check">✓</div>
-        <h2>Order Placed! 🎉</h2>
-        <div class="order-no-pill" id="cOrderNo"></div>
-        <p class="confirm-note">Your order has been sent to our WhatsApp 💕<br>
-           We'll confirm payment &amp; delivery details shortly!</p>
-        <div class="confirm-summary" id="cSummary"></div>
-        <div class="confirm-actions">
-            <a class="btn" id="cWaLink" target="_blank">💬 View in WhatsApp</a>
-            <button class="btn btn-outline" onclick="closeConfirm()">Keep Shopping 🎀</button>
+    <div class="variant-overlay" id="variantOverlay" onclick="closeVariant(event)">
+        <div class="variant-modal" onclick="event.stopPropagation()">
+            <button class="variant-close" onclick="hideVariant()">✕</button>
+            <h3 id="vName"></h3>
+            <p class="variant-price" id="vPrice"></p>
+            <p style="font-size:13px;color:var(--pink-text);margin-bottom:10px;">Choose your size / variant 🎀</p>
+            <div class="variant-options" id="vOptions"></div>
+            <button class="btn" id="vAddBtn" onclick="confirmVariantAdd()" disabled
+                    style="opacity:.5;">Add to Bag 🛍️</button>
         </div>
     </div>
-</div>
+
+    <!-- Order confirmation screen -->
+    <div class="confirm-screen" id="confirmScreen">
+        <div class="confirm-card">
+            <div class="confirm-check">✓</div>
+            <h2>Order Placed! 🎉</h2>
+            <div class="order-no-pill" id="cOrderNo"></div>
+            <p class="confirm-note">Your order has been sent to our WhatsApp 💕<br>
+               We'll confirm payment &amp; delivery details shortly!</p>
+            <div class="confirm-summary" id="cSummary"></div>
+            <div class="confirm-actions">
+                <a class="btn" id="cWaLink" target="_blank">💬 View in WhatsApp</a>
+                <button class="btn btn-outline" onclick="closeConfirm()">Keep Shopping 🎀</button>
+            </div>
+        </div>
+    </div>
 
     <!-- Toast notification -->
     <div class="toast" id="toast"></div>
@@ -1172,26 +1196,11 @@
     const DELIVERY_FEE_NGN = 2000;            
     const FREE_DELIVERY_NGN = 25000;          
 
-    // Default category fallback sizes if product sizes are omitted
-    const VARIANT_SIZES = {
-        "scrunchies":  ["Small", "Medium", "Large"],
-        "claw clips":  ["Mini", "Medium", "Large", "X-Large"],
-        "hair bands":  ["Kids", "Adult"],
-        "waist beads": ['26"', '28"', '30"', '32"', '34"', '36"', '38"'],
-        "perfumes":    ["30ml", "50ml", "100ml"],
-        "earrings":    ["Studs", "Hoops", "Drops"],
-        "jewelry":     ["One Size"]
-    };
-
-    // ==================================================
-    // PRODUCT CATALOGUE
-    // Add a `sizes` array with specific prices per size for products.
-    // If omitted, default sizes from VARIANT_SIZES will fall back to base `price`.
-    // ==================================================
+    // Only Scrunchies retain dynamic size arrays now
     const PRODUCTS = [
         // ----- SCRUNCHIES -----
         { 
-            name: "Satin Scrunchies ",     
+            name: "Satin Scrunchies",     
             price: 0.50,
             category: "scrunchies",  
             img: "img/acbcead3-a40b-46c9-b0c4-f41dbe8aa3b4.jpeg",  
@@ -1199,169 +1208,86 @@
             oldPrice: 1.00, 
             stars: 5,
             sizes: [
-                { name: "Small", price: 0.50 },
-                { name: "Medium", price: 0.60 },
-                { name: "Large", price: 0.70 }
+                { name: "Medium", price: 0.50 },
+                { name: "Large", price: 0.60 }
             ]
         },
-        { name: "Multi-colored Scrunchies",        price: 1.30, category: "scrunchies",  img: "img/scruch.jpeg",  tag: "",           oldPrice: 0,     stars: 5,
-            sizes: [
-                { name: "Small", price: 1.30 },
-                { name: "Medium", price: 1.40 },
-                { name: "Large", price: 1.50 }
-            ]
-        },
-        { name: "Cotton Mini Scrunchies",       price: 0.50,  category: "scrunchies",  img: "img/cotton.jpeg",  tag: "",           oldPrice: 0,     stars: 5, sizes: [
-                { name: "Small", price: 0.50 },
-                { name: "Medium", price: 0.60 },
-                { name: "Large", price: 0.70 }
-            ] },
-        { name: "Silk Oversized Scrunchies",     price: 0.80,  category: "scrunchies",  img: "img/silk-scrunchies.jpg",  tag: "",           oldPrice: 0,     stars: 4, sizes: [
-                { name: "Small", price: 0.80 },
-                { name: "Medium", price: 0.90 },
-                { name: "Large", price: 1.00 }
-            ] },
-
-        // ----- CLAW CLIPS -----
-        { name: "Large Matte Claw Clip",        price: 1.60,  category: "claw clips",  img: "img/39c32484-05f1-4733-9719-e6ebb58a8efa.jpeg",  tag: "BESTSELLER", oldPrice: 0,     stars: 5, sizes: [
-                { name: "Small", price: 1.60 },
-                { name: "Medium", price: 1.70 },
-                { name: "Large", price: 1.80 }
-            ] },
-        { name: "Tortoiseshell Claw Clips", price: 1.60,  category: "claw clips",  img: "img/ae73ad59-5d82-4467-887e-c80ddf863977.jpeg",  tag: "",           oldPrice: 0,     stars: 5, sizes: [
-                { name: "Small", price: 1.60 },
-                { name: "Medium", price: 1.70 },
-                { name: "Large", price: 1.80 }
-            ] },
-        { name: "Pastel Mini Claw Clip",price: 0.70,  category: "claw clips",  img: "img/mini.jpeg",  tag: "",           oldPrice: 0,     stars: 4, sizes: [
-                { name: "Small", price: 0.70 },
-                { name: "Medium", price: 0.80 },
-                { name: "Large", price: 0.90 }
-            ] },
-
-        // ----- HAIR BANDS -----
-        { name: "Floral Headband",              price: 0.70,  category: "hair bands",  img: "img/headband.jpeg",  tag: "",           oldPrice: 0,     stars: 5, sizes: [
-                { name: "Small", price: 0.70 },
-                { name: "Medium", price: 0.80 },
-                { name: "Large", price: 0.90 }
-            ] },
-        { name: "Wide Padded Headband",         price: 0.95,  category: "hair bands",  img: "img/16e65c50-8d09-437a-a753-9a34da4df9f2.jpeg",  tag: "NEW",        oldPrice: 0,     stars: 5, sizes: [
-                { name: "Small", price: 0.95 },
-                { name: "Medium", price: 1.05 },
-                { name: "Large", price: 1.15}
-            ] },
-        { name: "Braided Elastic Bands",   price: 0.95,  category: "hair bands",  img: "img/dfea921a-eeaa-4f75-a842-c5cc82461326.jpeg", tag: "",           oldPrice: 0,     stars: 4, sizes: [
-                { name: "Small", price: 0.95 },
-                { name: "Medium", price: 1.05 },
-                { name: "Large", price: 1.15 }
-            ] },
-            { name: "Bow",   price: 1.10,  category: "hair bands",  img: "img/bow.jpeg", tag: "",           oldPrice: 0,     stars: 4, sizes: [
-                { name: "Small", price: 1.10 },
-                { name: "Medium", price: 1.20 },
-                { name: "Large", price: 1.30 }
-            ] },
-
-        // ----- HAIR PINS -----
-        { name: "Pearl Hair Pins",   price: 0.95,  category: "hair pins",   img: "img/73bd7e0a-3306-4d33-a833-46ae09580f48.jpeg", tag: "",           oldPrice: 0,     stars: 5, sizes: [
-                { name: "Small", price: 0.95 },
-                { name: "Medium", price: 1.05 },
-                { name: "Large", price: 1.15}
-            ]},
-        { name: "Gold Twist Hair Pins ",     price: 0.80,  category: "hair pins",   img: "img/3420ba5e-02f4-43da-8739-e15a63e84f22.jpeg", tag: "",           oldPrice: 0,     stars: 5, sizes: [
-                { name: "Small", price: 0.80 },
-                { name: "Medium", price: 0.90 },
-                { name: "Large", price: 1.00 }
-            ] },
-        { name: "Crystal Rhinestone Hair Pins", price: 0.80,  category: "hair pins",   img: "img/bc8959ad-2f3e-44e9-a424-3ac11a122a10.jpeg", tag: "NEW",        oldPrice: 0,     stars: 4, sizes: [
-                { name: "Small", price: 0.80 },
-                { name: "Medium", price: 0.90 },
-                { name: "Large", price: 1.00 }
-            ] },
-
-        // ----- WAIST BEADS -----
-        { name: "Customizable Waist Beads",          price: 2.50,  category: "waist beads", img: "img/classic.jpeg", tag: "BESTSELLER", oldPrice: 0,     stars: 5, sizes: [
-                { name: "Small", price: 2.50 },
-                { name: "Medium", price: 2.60 },
-                { name: "Large", price: 2.70 }
-            ] },
-        { name: "Gold Accent Waist Beads",      price: 1.50, category: "waist beads", img: "img/05b2a63a-75a5-4071-838a-536b94cbd76d.jpeg", tag: "",           oldPrice: 0,     stars: 5, sizes: [
-                { name: "Small", price: 1.50 },
-                { name: "Medium", price: 1.60 },
-                { name: "Large", price: 1.70 }
-            ]},
-        { name: "Crystal Charm Waist Beads",    price: 1.40, category: "waist beads", img: "img/0892f421-a6c0-4609-bfd9-bd63d7a58ee3.jpeg", tag: "",           oldPrice: 0,     stars: 5,  sizes: [
-                { name: "Small", price: 1.40 },
-                { name: "Medium", price: 1.50 },
-                { name: "Large", price: 1.60 }
-            ] },
-
-        // ----- PERFUMES -----
         { 
-            name: "Body Spray",     
-            price: 6.99, 
-            category: "perfumes",    
-            img: "img/body spray.jpeg", 
-            tag: "NEW",        
+            name: "Multi-colored Scrunchies",        
+            price: 1.30, 
+            category: "scrunchies",  
+            img: "img/scruch.jpeg",  
+            tag: "",           
             oldPrice: 0,     
             stars: 5,
             sizes: [
-                { name: "30ml", price: 6.99 },
-                { name: "50ml", price: 7.99 },
-                { name: "100ml", price: 8.99 }
+                { name: "Medium", price: 0.90 },
+                { name: "Large", price: 1.00 }
             ]
         },
-        { name: "Oil Perfume",    price: 0.50, category: "perfumes",    img: "img/oil.jpeg", tag: "",           oldPrice: 0,     stars: 5,
+        { 
+            name: "Cotton Mini Scrunchies",       
+            price: 0.50,  
+            category: "scrunchies",  
+            img: "img/cotton.jpeg",  
+            tag: "",           
+            oldPrice: 0,     
+            stars: 5, 
             sizes: [
-                { name: "30ml", price: 0.50 },
-                { name: "50ml", price: 0.60 },
-                { name: "100ml", price: 0.70 }
-            ] },
-        { name: "Rose Garden Eau de Parfum",    price: 3.99, category: "perfumes",    img: "img/900abc63-9ca3-4f2f-ae33-d7768a7e215e.jpeg", tag: "",           oldPrice: 0,     stars: 5,
+                { name: "Medium", price: 0.50 },
+                { name: "Large", price: 0.60 }
+            ] 
+        },
+        { 
+            name: "Silk Oversized Scrunchies",     
+            price: 0.80,  
+            category: "scrunchies",  
+            img: "img/silk-scrunchies.jpg",  
+            tag: "",           
+            oldPrice: 0,     
+            stars: 4, 
             sizes: [
-                { name: "30ml", price: 3.99 },
-                { name: "50ml", price: 4.99 },
-                { name: "100ml", price: 5.99 }
-            ] },
-        { name: "Body Mist",             price: 1.99, category: "perfumes",    img: "img/61653dae-ac05-42e5-b3be-d75a5786f5c8.jpeg", tag: "",           oldPrice: 0,     stars: 4,
-            sizes: [
-                { name: "30ml", price: 1.99 },
-                { name: "50ml", price: 2.99 },
-                { name: "100ml", price: 3.99 }
-            ] },
+                { name: "Medium", price: 0.90 },
+                { name: "Large", price: 1.00 }
+            ] 
+        },
+
+        // ----- CLAW CLIPS -----
+        { name: "Large Matte Claw Clip",        price: 1.60,  category: "claw clips",  img: "img/39c32484-05f1-4733-9719-e6ebb58a8efa.jpeg",  tag: "BESTSELLER", oldPrice: 0, stars: 5 },
+        { name: "Tortoiseshell Claw Clips",     price: 1.60,  category: "claw clips",  img: "img/ae73ad59-5d82-4467-887e-c80ddf863977.jpeg",  tag: "",           oldPrice: 0, stars: 5 },
+        { name: "Pastel Mini Claw Clip",        price: 1.60,  category: "claw clips",  img: "img/mini.jpeg",  tag: "",           oldPrice: 0, stars: 4 },
+
+        // ----- HAIR BANDS -----
+        { name: "Floral Headband",              price: 0.70,  category: "hair bands",  img: "img/headband.jpeg",  tag: "",           oldPrice: 0, stars: 5 },
+        { name: "Wide Padded Headband",         price: 0.95,  category: "hair bands",  img: "img/16e65c50-8d09-437a-a753-9a34da4df9f2.jpeg",  tag: "NEW",        oldPrice: 0, stars: 5 },
+        { name: "Braided Elastic Bands",        price: 0.95,  category: "hair bands",  img: "img/dfea921a-eeaa-4f75-a842-c5cc82461326.jpeg", tag: "",           oldPrice: 0, stars: 4 },
+        { name: "Bow",                          price: 1.10,  category: "hair bands",  img: "img/bow.jpeg", tag: "",           oldPrice: 0, stars: 4 },
+
+        // ----- HAIR PINS -----
+        { name: "Pearl Hair Pins",              price: 0.95,  category: "hair pins",   img: "img/73bd7e0a-3306-4d33-a833-46ae09580f48.jpeg", tag: "",           oldPrice: 0, stars: 5 },
+        { name: "Gold Twist Hair Pins ",        price: 0.80,  category: "hair pins",   img: "img/3420ba5e-02f4-43da-8739-e15a63e84f22.jpeg", tag: "",           oldPrice: 0, stars: 5 },
+        { name: "Crystal Rhinestone Hair Pins", price: 0.80,  category: "hair pins",   img: "img/bc8959ad-2f3e-44e9-a424-3ac11a122a10.jpeg", tag: "NEW",        oldPrice: 0, stars: 4 },
+
+        // ----- WAIST BEADS -----
+        { name: "Customizable Waist Beads",     price: 2.50,  category: "waist beads", img: "img/classic.jpeg", tag: "BESTSELLER", oldPrice: 0, stars: 5 },
+        { name: "Gold Accent Waist Beads",      price: 1.50,  category: "waist beads", img: "img/05b2a63a-75a5-4071-838a-536b94cbd76d.jpeg", tag: "",           oldPrice: 0, stars: 5 },
+        { name: "Crystal Charm Waist Beads",    price: 1.40,  category: "waist beads", img: "img/0892f421-a6c0-4609-bfd9-bd63d7a58ee3.jpeg", tag: "",           oldPrice: 0, stars: 5 },
+
+        // ----- PERFUMES -----
+        { name: "Body Spray",                   price: 6.99,  category: "perfumes",    img: "img/body spray.jpeg", tag: "NEW",        oldPrice: 0, stars: 5 },
+        { name: "Oil Perfume",                  price: 0.50,  category: "perfumes",    img: "img/oil.jpeg", tag: "",           oldPrice: 0, stars: 5 },
+        { name: "Rose Garden Eau de Parfum",    price: 3.99,  category: "perfumes",    img: "img/900abc63-9ca3-4f2f-ae33-d7768a7e215e.jpeg", tag: "",           oldPrice: 0, stars: 5 },
+        { name: "Body Mist",                    price: 1.99,  category: "perfumes",    img: "img/61653dae-ac05-42e5-b3be-d75a5786f5c8.jpeg", tag: "",           oldPrice: 0, stars: 4 },
 
         // ----- EARRINGS -----
-        { name: "Pearl Stud Earrings",          price: 0.50,  category: "earrings",    img: "img/15 Pairs of Retro Pearl Geometric Six Claw Crystal Zircon Earrings Set, Suitable for Daily Wear for.jpeg", tag: "",           oldPrice: 0,     stars: 5, sizes: [
-                { name: "Small", price: 0.50 },
-                { name: "Medium", price: 0.60 },
-                { name: "Large", price: 0.70 }
-            ] },
-        { name: "Gold Stud Earrings",price: 0.50, category: "earrings",    img: "img/gold stud.jpeg", tag: "BESTSELLER", oldPrice: 0,     stars: 5, sizes: [
-                { name: "Small", price: 0.50 },
-                { name: "Medium", price: 0.60 },
-                { name: "Large", price: 0.70 }
-            ] },
-        { name: "Gold Knuckle Rings",     price: 0.50,  category: "earrings",    img: "img/gold rings.jpeg", tag: "",           oldPrice: 0,     stars: 4, sizes: [
-                { name: "Small", price: 0.50 },
-                { name: "Medium", price: 0.60 },
-                { name: "Large", price: 0.70 }
-            ] },
+        { name: "Pearl Stud Earrings",          price: 0.50,  category: "earrings",    img: "img/15 Pairs of Retro Pearl Geometric Six Claw Crystal Zircon Earrings Set, Suitable for Daily Wear for.jpeg", tag: "", oldPrice: 0, stars: 5 },
+        { name: "Gold Stud Earrings",           price: 0.50,  category: "earrings",    img: "img/gold stud.jpeg", tag: "BESTSELLER", oldPrice: 0, stars: 5 },
+        { name: "Gold Knuckle Rings",            price: 0.50,  category: "earrings",    img: "img/gold rings.jpeg", tag: "",           oldPrice: 0, stars: 4 },
 
         // ----- JEWELRY -----
-        { name: "Dainty Layered Necklace",      price: 1.60, category: "jewelry",     img: "img/bb50cbf4-be6c-4a19-ada5-df4ab51a8abb.jpeg", tag: "",           oldPrice: 0,     stars: 5, sizes: [
-                { name: "Small", price: 1.60 },
-                { name: "Medium", price: 1.70},
-                { name: "Large", price: 1.80 }
-            ] },
-        { name: "Charm Bracelet",           price: 2.50, category: "jewelry",     img: "img/charm bracelet.jpeg", tag: "NEW",        oldPrice: 0,     stars: 5, sizes: [
-                { name: "Small", price: 2.50},
-                { name: "Medium", price: 2.60 },
-                { name: "Large", price: 2.70 }
-            ] },
-        { name: "Hand Bracelets",             price: 2.50,  category: "jewelry",     img: "img/hand bracelet.jpeg", tag: "",           oldPrice: 0,     stars: 4, sizes: [
-                { name: "Small", price: 2.00 },
-                { name: "Medium", price: 2.10 },
-                { name: "Large", price: 2.20 }
-            ] }
+        { name: "Dainty Layered Necklace",      price: 1.60,  category: "jewelry",     img: "img/bb50cbf4-be6c-4a19-ada5-df4ab51a8abb.jpeg", tag: "",           oldPrice: 0, stars: 5 },
+        { name: "Charm Bracelet",              price: 2.50,  category: "jewelry",     img: "img/charm bracelet.jpeg", tag: "NEW",        oldPrice: 0, stars: 5 },
+        { name: "Hand Bracelets",                price: 2.50,  category: "jewelry",     img: "img/hand bracelet.jpeg", tag: "",           oldPrice: 0, stars: 4 }
     ];
 
     const CATEGORIES = [
@@ -1395,22 +1321,14 @@
     }
 
     // ==================================================
-    // VARIANT PICKER (DYNAMIC PRICE UPDATES)
+    // VARIANT PICKER (SCRUNCHIES ONLY)
     // ==================================================
     let currentVariantProduct = null;
     let selectedVariant = null;
 
     function openVariant(product) {
-        let sizeOptions = [];
-
-        // Check if the item has explicit size pricing or falls back to category defaults
-        if (product.sizes && product.sizes.length > 0) {
-            sizeOptions = product.sizes;
-        } else if (VARIANT_SIZES[product.category]) {
-            sizeOptions = VARIANT_SIZES[product.category].map(s => ({ name: s, price: product.price }));
-        }
-
-        if (sizeOptions.length === 0) {
+        // Direct checkout skip for everything except Scrunchies
+        if (product.category !== "scrunchies" || !product.sizes || product.sizes.length === 0) {
             addToCart(product.name, product.price);
             return;
         }
@@ -1421,7 +1339,7 @@
         document.getElementById("vName").textContent = product.name;
         document.getElementById("vPrice").textContent = formatMoney(product.price);
         
-        document.getElementById("vOptions").innerHTML = sizeOptions.map(opt =>
+        document.getElementById("vOptions").innerHTML = product.sizes.map(opt =>
             `<button class="variant-opt" onclick='pickVariant(this, "${opt.name}", ${opt.price})'>
                 ${opt.name} (${formatMoney(opt.price)})
             </button>`
@@ -1441,7 +1359,6 @@
         
         selectedVariant = { name: sizeName, price: sizePrice };
 
-        // Dynamically update display price in modal
         document.getElementById("vPrice").textContent = formatMoney(sizePrice);
 
         const addBtn = document.getElementById("vAddBtn");
@@ -1581,11 +1498,18 @@
     }
 
     // ==================================================
-    // CART SYSTEM
+    // CART SYSTEM & OPTIONAL DELIVERY
     // ==================================================
     function toggleCart() {
         document.getElementById("cartPanel").classList.toggle("open");
         document.getElementById("cartOverlay").classList.toggle("show");
+        renderCart();
+    }
+
+    function toggleAddressVisibility() {
+        const isDeliveryChecked = document.getElementById("needDelivery").checked;
+        const addressInput = document.getElementById("custAddress");
+        addressInput.style.display = isDeliveryChecked ? "block" : "none";
         renderCart();
     }
 
@@ -1625,8 +1549,15 @@
     function cartTotals() {
         const subtotalUSD = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
         const subtotalNGN = subtotalUSD * NGN_RATE;
-        const deliveryNGN = (subtotalNGN === 0 || subtotalNGN >= FREE_DELIVERY_NGN) ? 0 : DELIVERY_FEE_NGN;
-        return { subtotalUSD, subtotalNGN, deliveryNGN };
+        
+        const isDeliverySelected = document.getElementById("needDelivery")?.checked || false;
+        let deliveryNGN = 0;
+        
+        if (isDeliverySelected) {
+            deliveryNGN = (subtotalNGN >= FREE_DELIVERY_NGN) ? 0 : DELIVERY_FEE_NGN;
+        }
+
+        return { subtotalUSD, subtotalNGN, deliveryNGN, isDeliverySelected };
     }
 
     function renderCart() {
@@ -1652,7 +1583,7 @@
             </div>
         `).join("");
 
-        const { subtotalNGN, deliveryNGN } = cartTotals();
+        const { subtotalNGN, deliveryNGN, isDeliverySelected } = cartTotals();
         const grandNGN = subtotalNGN + deliveryNGN;
         window.lastOrderedItems = [...cart];
         window.lastGrandTotal   = grandNGN;
@@ -1661,7 +1592,7 @@
             <div class="cart-summary-line"><span>Subtotal</span><span>₦${subtotalNGN.toLocaleString()}</span></div>
             <div class="cart-summary-line">
                 <span>Delivery</span>
-                <span>${deliveryNGN === 0 ? "FREE 🎉" : "₦" + deliveryNGN.toLocaleString()}</span>
+                <span>${!isDeliverySelected ? "Pickup (₦0)" : (deliveryNGN === 0 ? "FREE 🎉" : "₦" + deliveryNGN.toLocaleString())}</span>
             </div>
             <div class="cart-summary-line grand"><span>Total</span>
                 <span>${formatMoney(grandNGN / NGN_RATE)}</span></div>
@@ -1679,10 +1610,11 @@
 
         const name    = document.getElementById("custName").value.trim();
         const phone   = document.getElementById("custPhone").value.trim();
+        const isDeliverySelected = document.getElementById("needDelivery").checked;
         const address = document.getElementById("custAddress").value.trim();
 
-        if (!name || !phone || !address) {
-            showToast("Please fill in your details before ordering 👉👈");
+        if (!name || !phone || (isDeliverySelected && !address)) {
+            showToast("Please fill in all required details before ordering 👉👈");
             return;
         }
 
@@ -1695,7 +1627,7 @@
         message += "*Customer Details:*\n";
         message += `👑 Name: ${name}\n`;
         message += `📞 Phone: ${phone}\n`;
-        message += `📍 Address: ${address}\n\n`;
+        message += `📍 Order Type: ${isDeliverySelected ? "Delivery (" + address + ")" : "Self-Pickup"}\n\n`;
         message += "*Order Items:*\n";
 
         cart.forEach((item, index) => {
@@ -1704,7 +1636,7 @@
         });
 
         message += `\nSubtotal: ₦${Math.round(subtotalNGN).toLocaleString()}`;
-        message += `\nDelivery: ${deliveryNGN === 0 ? "FREE" : "₦" + deliveryNGN.toLocaleString()}`;
+        message += `\nDelivery: ${!isDeliverySelected ? "N/A (Pickup)" : (deliveryNGN === 0 ? "FREE" : "₦" + deliveryNGN.toLocaleString())}`;
         message += `\n💰 *TOTAL: ${formatMoney(grandNGN / NGN_RATE)}*\n\nThank you! 💕`;
 
         const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
@@ -1720,6 +1652,8 @@
         document.getElementById("custName").value = "";
         document.getElementById("custPhone").value = "";
         document.getElementById("custAddress").value = "";
+        document.getElementById("needDelivery").checked = false;
+        toggleAddressVisibility();
     }
 
     function showConfirmation(orderNo, waUrl) {
@@ -1730,7 +1664,7 @@
             summary += `<div class="cs-row"><span>${item.name} × ${item.qty}</span>
                         <span>${formatMoney(item.price * item.qty)}</span></div>`;
         });
-        summary += `<div class="cs-row cs-total"><span>Total (incl. delivery)</span>
+        summary += `<div class="cs-row cs-total"><span>Total</span>
                     <span>${formatMoney(lastGrandTotal / NGN_RATE)}</span></div>`;
         document.getElementById("cSummary").innerHTML = summary;
 
@@ -1759,3 +1693,5 @@
     renderProducts();
     renderCart();
 </script>
+</body>
+</html>
